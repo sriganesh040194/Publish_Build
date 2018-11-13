@@ -1,0 +1,24 @@
+#https://cloud.google.com/appengine/docs/flexible/nodejs/reference/app-yaml
+runtime: aspnetcore
+api_version: '1.0'
+env_variables:
+  ASPNETCORE_ENVIRONMENT: 'Production'
+env: flexible
+threadsafe: true
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 2
+  cpu_utilization:
+	target_utilization: 0.5
+#manual_scaling:
+  #instances: 1
+#resources:
+  #cpu: 1
+  #memory_gb: 1
+  #disk_size_gb: 10
+ liveness_check:
+  path: "/company-details"
+  check_interval_sec: 30
+  timeout_sec: 4
+  failure_threshold: 2
+  success_threshold: 2
